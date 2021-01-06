@@ -1,0 +1,35 @@
+﻿@model RegistrationModel
+
+@if (Model?.Name != null)
+{
+    <div class="col-xs-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+        <h3>Registered as @Model.Name</h3>
+    </div>
+}
+else
+{
+    <div class="col-xs-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+        <h3>Registration</h3>
+        <form asp-controller="registration" asp-action="post" method="post">
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
+                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                        <input asp-for="@Model.Name" type="text" class="form-control input-sm" placeholder="First name">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <span asp-validation-for="@Model.Age" class="text-danger"></span>
+                        <input asp-for="@Model.Age" type="text" class="form-control input-sm" placeholder="Age">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                <input asp-for="@Model.Email" type="email" class="form-control input-sm" placeholder="Email address">
+            </div>
+            <input type="submit" value="register" class="btn btn-info btn-block">
+        </form>
+    </div>
+}
